@@ -13,7 +13,7 @@ import math
 model = YOLO("yolov8_custom.pt")  # Replace with the path to your trained YOLOv8 model
 
 # Connect to the Niryo robot
-robot = NiryoRobot("10.10.10.10")
+robot = NiryoRobot("*.*.*.*")
 work_space = "QualityInspection"
 robot.calibrate_auto()
 robot.update_tool()
@@ -43,11 +43,10 @@ top_position = ([25,0,40,0,90,0]) #observation
 pos = (convert_data(top_position))
 
 # Define Dropping position
-
-# Place the bottle on right side
+# Place the good bottle on right side
 place_up_left = (1.5698999154296058, 0.3403396492498681, -0.8234034853607025, 0.0016266343776782932, -1.090752993776484, 9.265358979293481e-05)
 
-# Place the bottle on left side
+# Place the bad bottle on left side
 place_up_right = (-1.5698357078360656, 0.3403396492498681, -0.8234034853607025, 0.0016266343776782932, -1.0892190129885981, 9.265358979293481e-05)
 
 
@@ -59,7 +58,7 @@ def grabbing_left():
 
     while catch_count < max_catch_count:
         robot.release_with_tool()
-        # Moving to observation pose]
+        # Moving to observation pose
         robot.move_pose(pos)
 
         #trying to get an object via Vision pick
