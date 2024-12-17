@@ -10,7 +10,7 @@ import time
 import math
 
 # Load the trained YOLO model
-model = YOLO("yolov8_custom.pt")  # Replace with the path to your trained YOLOv8 model
+model = YOLO("yolov8_custom.pt")  
 
 # Connect to the Niryo robot
 robot = NiryoRobot("*.*.*.*")
@@ -63,7 +63,7 @@ def grabbing_left():
 
         #trying to get an object via Vision pick
         obj_found, shape_ret, color_ret = robot.vision_pick(work_space,
-                                                            height_offset=0.05,
+                                                            height_offset=0.12,
                                                             shape=ObjectShape.ANY,
                                                             color=ObjectColor.ANY)
         if not obj_found:
@@ -92,7 +92,7 @@ def grabbing_right():
 
         #trying to get an object via Vision pick
         obj_found, shape_ret, color_ret = robot.vision_pick(work_space,
-                                                            height_offset=0.05,
+                                                            height_offset=0.12,
                                                             shape=ObjectShape.ANY,
                                                             color=ObjectColor.ANY)
         if not obj_found:
