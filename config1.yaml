@@ -1,0 +1,5 @@
+path: /Users/nirzarshah/Documents/Pyniryo/Cream_Bottle_dataset  # Path to the dataset directory
+train: images/train  # Path to the training images
+val: images/val      # Path to the validation images
+nc: 2                # Number of classes
+names: ['good', 'bad'] 
