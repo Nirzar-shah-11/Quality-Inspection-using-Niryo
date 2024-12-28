@@ -38,7 +38,7 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
 - **approach2.py**: Horizontal and vertical bottle detection.
 - **calibrate.py**: Script for robot calibration.
 
-- **VisionPickAndPlace**: Contains approach1, approach2, and calibrate.py.
+
 
 ---
 
@@ -123,9 +123,13 @@ python calibrate.py
 
 ## Dataset Structure
 
-The dataset consists of images of defective and non-defective bottles:
-- `dataset/defective/`: Contains images of defective bottles.
-- `dataset/non_defective/`: Contains images of non-defective bottles.
+- **YOLOv8**:
+  - `dataset/good/`: Contains images of non-defective bottles (Good).
+  - `dataset/bad/`: Contains images of defective bottles (Bad).
+
+- **MobileNet SSD**:
+  - `dataset/defective/`: Contains images of defective bottles.
+  - `dataset/non_defective/`: Contains images of non-defective bottles.
 
 ---
 
