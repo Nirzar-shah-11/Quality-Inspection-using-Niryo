@@ -25,6 +25,7 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
   - `approach1.py`: Python file for basic detection and pick-and-place.
   - `approach2.py`: Python file for vision pick-and-place.
   - `approach3.py`: Python file for 2-camera approach.
+  - 'approach4.py':Python updated file for size not found for bottle approach.
 
 #### MobileNet SSD + CNN
 - **mobilenet+CNN/CNN**
