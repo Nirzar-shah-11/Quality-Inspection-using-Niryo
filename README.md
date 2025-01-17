@@ -25,8 +25,8 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
   - `approach1.py`: Python file for basic detection and pick-and-place.
   - `approach2.py`: Python file for vision pick-and-place.
   - `approach3.py`: Python file for 2-camera approach.
-  - `approach4trail.py`:Python updated file for horizontal and vertical approach.
-  - `approach4final.py`: In future its going to work on that .
+  - `approach4_trail.py`:Python updated file for horizontal and vertical approach.
+  - `approach4_final.py`: In future its going to work on that .
 
 #### MobileNet SSD + CNN
 - **mobilenet+CNN/CNN**
@@ -34,11 +34,11 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
   - `mobilenet_iter_73000.caffemodel`: Pre-trained weights for MobileNet SSD.
   - `bottle_defect_classifier.h5`: CNN model for defect classification.
 
-- **training.py**: Python file for model training.
-- **pickplacemobilenet.py**: Basic pick-and-place functionality.
-- **approach1.py**: Basic bottle detection.
-- **approach2updated.py**: Horizontal and vertical bottle detection.
-- **calibrate.py**: Script for robot calibration.
+- `training.py`: Python file for model training.
+- `pickplacemobilenet.py`: Basic pick-and-place functionality.
+- `approach1.py`: Basic bottle detection.
+- `approach2_updated.py`: Horizontal and vertical bottle detection.
+- `calibrate.py`: Script for robot calibration.
 
 
 
@@ -76,7 +76,7 @@ pip install opencv-python-headless tensorflow pyniryo numpy
 
 ### Place Files
 1. Place the YOLOv8 files (`yolov8.yaml`, `yolov8.pt`) in the `yolo8/CremeBottleDetection` directory.
-2. Place the MobileNet SSD files (`deploy.prototxt`, `mobilenet_iter_73000.caffemodel`) in the `mobilenet+CNN/CNN` directory.
+2. Place the MobileNet SSD files (`deploy.prototxt`, `mobilenet_iter_73000.caffemodel`) in the `mobilenetSSD` directory.
 3. Place the defect classification model (`bottle_defect_classifier.h5`) in the same directory.
 4. Ensure dataset images are properly organized under `dataset/`.
 
@@ -114,8 +114,8 @@ pip install opencv-python-headless tensorflow pyniryo numpy
 
 3. **Horizontal and Vertical Detection**:
    ```bash
-   python CNN/approach2.py
-   python CNN/approach2_updated.py
+   python MobilenetSSD/approach2.py
+   python MobilenetSSD/approach2_updated.py
    ```
 
 ### Robot Calibration
