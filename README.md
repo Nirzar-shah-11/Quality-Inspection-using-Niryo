@@ -1,170 +1,182 @@
+# **Quality Inspection Using Niryo**
 
-
-# Bottle Inspection and Classification with Niryo Robot
-
-This project uses the Niryo robot arm to detect, classify, and sort bottles as defective or non-defective. The system integrates **YOLOv8** and **MobileNet SSD** for object detection, along with various approaches for handling bottle detection and sorting.
-
-## Features
-- **Object Detection**: Identifies bottles in the camera feed using **YOLOv8** and **MobileNet SSD**.
-- **Defect Classification**: Uses MobileNet SSD for defect detection and sorting.
-- **Robotic Sorting**: Uses the Niryo robot arm to pick and place bottles based on detection.
-- **Robot Calibration**: Ensures the robot is calibrated for accurate positioning.
+This project utilizes the Niryo robot arm to detect, classify, and sort objects (e.g., bottles) as defective or non-defective. It integrates object detection using YOLOv8 and MobileNet SSD, along with robot calibration and automated pick-and-place operations.
 
 ---
 
-## File Structure
+## **Features**
 
-### Directories
+- **Object Detection:** Utilizes YOLOv8 and MobileNet SSD to detect objects in the workspace.
+- **Defect Classification:** MobileNet SSD with CNN-based classification for sorting defective and non-defective objects.
+- **Robotic Sorting:** Niryo robot arm performs automated pick-and-place based on defect detection.
+- **Robot Calibration:** Ensures the robot arm is accurately calibrated for object positioning.
+- **Data Generation:** Scripts to create and augment datasets for training object detection and classification models.
 
-#### YOLOv8
-- **yolo8/CremeBottleDetection**
-  - `yolov8.yaml`: Configuration file for YOLOv8 basic detection.
-  - `yolov8.pt`: Pre-trained weights for YOLOv8 basic detection.
+---
 
-- **VisionPickAndPlace**
-  - `approach1.py`: Python file for basic detection and pick-and-place.
-  - `approach2.py`: Python file for vision pick-and-place.
-  - `approach3.py`: Python file for 2-camera approach.
-  - `approach4_trail.py`:Python updated file for horizontal and vertical approach.
-  - `approach4_final.py`: In future its going to work on that .
+## **Repository Structure**
 
-#### MobileNet SSD + CNN
-- **mobilenet+CNN/CNN**
-  - `deploy.prototxt`: Configuration file for MobileNet SSD.
-  - `mobilenet_iter_73000.caffemodel`: Pre-trained weights for MobileNet SSD.
-  - `bottle_defect_classifier.h5`: CNN model for defect classification.
+### **1. Basic**
 
-- `training.py`: Python file for model training.
-- `pickplacemobilenet.py`: Basic pick-and-place functionality.
-- `approach1.py`: Basic bottle detection.
-- `approach2_updated.py`: Horizontal and vertical bottle detection.
+Contains scripts for basic robot operation and coordinate fetching:
+
+- `PyNiryo.py`: Python bindings for interacting with the Niryo robot.
+- `With_Yolo`: YOLO integrated with basic robot operations.
+- `basic_grabbing.py`: Script for simple grabbing operations.
+- `getting_coordinates.py`: Fetches coordinates from the workspace.
+- `robot_camera_with_yolo.py`: Integrates camera operations with YOLO detection.
+- `robot_correct_image_extraction.py`: Extracts corrected images for training datasets.
+- `steel_can_detection.py`: Detects and sorts steel cans.
+- `video.py`: Demonstrates video capture functionality.
+
+---
+
+### **2. Can Detection Using YOLO**
+
+Contains scripts for YOLO-based object detection:
+
+- `VisionSet_yolo_can_detection.py`: Configures and sets up vision-based detection using YOLO.
+- `yolo_can_detection.py`: Performs YOLO-based can detection.
+- `yolo_can_detection_training.py`: Training script for YOLO-based object detection.
+
+---
+
+### **3. Image Generation**
+
+Scripts to create and augment datasets for object detection and classification:
+
+- `creating_dataset.py`: Captures images from the robot's camera for dataset generation.
+- `data_augmentation.py`: Augments captured images for a robust training dataset.
+- `data_creation.py`: Script for controlled image creation for datasets.
+
+---
+
+### **4. MobileNet SSD**
+
+Implements MobileNet SSD for defect detection and robotic sorting:
+
+- `Approach1.py`: Basic defect detection.
+- `Approach2_Trail.py` & `Approach2_final.py`: Horizontal and vertical defect detection approaches.
+- `Laptoptraining.py` & `Training.py`: Training scripts for MobileNet SSD and CNN models.
+- `bottle_defect_classifier.h5`: Pre-trained model for defect classification.
 - `calibrate.py`: Script for robot calibration.
+- `mobilenet_iter_73000.caffemodel`: Pre-trained weights for MobileNet SSD.
+- `deploy.prototxt`: MobileNet SSD configuration file.
 
+#### **Dataset Structure**
 
+- `dataset/defective/`: Contains images of defective objects.
+- `dataset/non-defective/`: Contains images of non-defective objects.
 
 ---
 
-## Requirements
+### **5. YOLOv8**
 
-### Hardware
-- Niryo One robot with camera.
+Implements YOLOv8 for advanced object detection and pick-and-place operations:
+
+- `Approach1.py`, `Approach2.py`, `Approach3.py`: Various YOLO-based object detection approaches.
+- `Approach4_trail.py`: Updated script for horizontal and vertical object detection.
+- `approach4_updated.py`: Prototype for a new approach.
+- `config1.yaml`: YOLOv8 configuration file for training.
+
+---
+
+### **6. Cream Bottle Detection**
+
+Scripts for detecting cream bottles:
+
+- `cream_bottle_detection.py`: Detects cream bottles using a custom YOLOv8 model.
+- `yolov8_custom1.pt`: Pre-trained YOLOv8 model for cream bottle detection.
+
+---
+
+## **Setup**
+
+### **Hardware**
+
+- Niryo One robot with a camera.
 - Computer with Python installed.
-- A workspace set up for sorting defective and non-defective bottles.
+- Workspace for sorting defective and non-defective objects.
 
-### Software and Libraries
-- Python 3.x
-- OpenCV
-- TensorFlow/Keras
-- Pyniryo
-- NumPy
-- YOLOv8 files (`yolov8.yaml` and `yolov8.pt`)
-- MobileNet SSD files (`deploy.prototxt` and `mobilenet_iter_73000.caffemodel`)
+### **Software Requirements**
 
----
+Install the required Python libraries:
 
-## Setup
-
-### Robot Configuration
-1. Connect the Niryo robot to your network.
-2. Use the IP address of the robot in the scripts (e.g., `10.10.10.10`).
-3. Ensure the Niryo robot is calibrated using `calibrate.py`.
-
-### Install Required Libraries
 ```bash
 pip install opencv-python-headless tensorflow pyniryo numpy
 ```
 
-### Place Files
-1. Place the YOLOv8 files (`yolov8.yaml`, `yolov8.pt`) in the `yolo8/CremeBottleDetection` directory.
-2. Place the MobileNet SSD files (`deploy.prototxt`, `mobilenet_iter_73000.caffemodel`) in the `mobilenetSSD` directory.
-3. Place the defect classification model (`bottle_defect_classifier.h5`) in the same directory.
-4. Ensure dataset images are properly organized under `dataset/`.
+### **File Placement**
+
+- Place YOLOv8 configuration (`config1.yaml`) and weights (`yolov8_custom1.pt`) in the `YOLOv8` directory.
+- Place MobileNet SSD files (`deploy.prototxt`, `mobilenet_iter_73000.caffemodel`) in the `MobileNetSSD` directory.
+- Place the defect classification model (`bottle_defect_classifier.h5`) in the same directory.
+- Ensure dataset images are placed in `dataset/defective/` and `dataset/non-defective/`.
 
 ---
 
-## Running the Project
+## **Usage**
 
-### YOLOv8 Object Detection Approaches
+### **1. Object Detection (YOLOv8)**
 
-1. **Basic Detection**:
-   ```bash
-   python yolo8/CremeBottleDetection.py
-   ```
+- Run the basic detection script:
+  ```bash
+  python YOLOv8/Approach2.py
+  ```
+- Run the horizontal and vertical detection script:
+  ```bash
+  python YOLOv8/Approach4_Trail.py
+  ```
 
-2. **Vision Pick and Place**:
-   ```bash
-   python VisionPickAndPlace/approach1.py
-   python VisionPickAndPlace/approach2.py
-   python VisionPickAndPlace/approach3.py
-   python VisionPickAndPlace/approach4_trail.py
-   python VisionPickAndPlace/approach4_updated.py
-   ```
+### **2. MobileNet SSD**
 
-### MobileNet SSD Object Detection Approaches
+- Perform basic defect classification:
+  ```bash
+  python MobileNetSSD/Approach1.py
+  ```
+ - Perform horizontal & Vertical defect classification:
+  ```bash
+  python MobileNetSSD/Approach2_updated.py
+  ``` 
+- Train the classification model:
+  ```bash
+  python MobileNetSSD/Training.py
+  ```
 
-1. **Basic Pick-and-Place**:
-   ```bash
-   python CNN/pickplacemobilenet.py
-   ```
+### **3. Dataset Generation**
 
-2. **Bottle Detection**:
-   ```bash
-   python CNN/approach1.py
-   ```
-
-3. **Horizontal and Vertical Detection**:
-   ```bash
-   python MobilenetSSD/approach2.py
-   python MobilenetSSD/approach2_updated.py
-   ```
-
-### Robot Calibration
-Calibrate the robot using the following script:
-```bash
-python calibrate.py
-```
+- Generate a dataset:
+  ```bash
+  python Image_Generation/creating_dataset.py
+  ```
 
 ---
 
-## Dataset Structure
+## **Troubleshooting**
 
-- **YOLOv8**:
-  - `dataset/good/`: Contains images of non-defective bottles (Good).
-  - `dataset/bad/`: Contains images of defective bottles (Bad).
-
-- **MobileNet SSD**:
-  - `dataset/defective/`: Contains images of defective bottles.
-  - `dataset/non_defective/`: Contains images of non-defective bottles.
+- **Object Detection Issues:** Ensure the camera is connected, and the detection threshold is appropriate.
+- **Robot Movement Inaccuracy:** Recalibrate the robot using `calibrate.py`.
+- **Dataset Quality:** Ensure images are properly labeled and augmented.
 
 ---
 
-## Notes
-- Ensure the workspace is properly defined for the robot in the code (e.g., `QualityInspection1` workspace).
-- Update any positional values in the scripts to match your workspace setup.
-- Use the `convert_data` function to handle positional conversions for the Niryo robot.
+## **Future Improvements**
+
+- Advanced defect classification models for higher accuracy.
+- Real-time feedback for robot operations.
+- Improved object detection pipelines for diverse object types.
 
 ---
 
-## Troubleshooting
-- If the robot cannot detect objects, ensure the camera is correctly connected and the detection threshold is appropriate.
-- If the robot's movements are inaccurate, recalibrate using `calibrate.py`.
+## **Contributors**
+
+- [AniketMunde](https://github.com/AniketMunde)
+- [Nirzar-shah-11](https://github.com/Nirzar-shah-11)
+- [MasterMind232000](https://github.com/MasterMind232000)
 
 ---
 
-## Future Improvements
-- Integrate a more advanced detection model for better accuracy.
-- Add real-time feedback for robot operations.
-- Optimize the classification model for faster inference.
+## **License**
 
----
-
-## Acknowledgments
-- **YOLOv8**: Used for object detection.
-- **MobileNet SSD**: Used for object detection.
-- **TensorFlow/Keras**: For defect classification model (only used in MobileNet SSD section).
-- **Pyniryo**: Python library for Niryo robot control.
-
----
-
-## License
 This project is licensed under the MIT License.
+
