@@ -25,7 +25,8 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
   - `approach1.py`: Python file for basic detection and pick-and-place.
   - `approach2.py`: Python file for vision pick-and-place.
   - `approach3.py`: Python file for 2-camera approach.
-  - 'approach4.py':Python updated file for size not found for bottle approach.
+  - `approach4trail.py`:Python updated file for horizontal and vertical approach.
+  - `approach4final.py`: In future its going to work on that .
 
 #### MobileNet SSD + CNN
 - **mobilenet+CNN/CNN**
@@ -36,7 +37,7 @@ This project uses the Niryo robot arm to detect, classify, and sort bottles as d
 - **training.py**: Python file for model training.
 - **pickplacemobilenet.py**: Basic pick-and-place functionality.
 - **approach1.py**: Basic bottle detection.
-- **approach2.py**: Horizontal and vertical bottle detection.
+- **approach2updated.py**: Horizontal and vertical bottle detection.
 - **calibrate.py**: Script for robot calibration.
 
 
@@ -95,6 +96,8 @@ pip install opencv-python-headless tensorflow pyniryo numpy
    python VisionPickAndPlace/approach1.py
    python VisionPickAndPlace/approach2.py
    python VisionPickAndPlace/approach3.py
+   python VisionPickAndPlace/approach4trail.py
+   python VisionPickAndPlace/approach4updated.py
    ```
 
 ### MobileNet SSD Object Detection Approaches
@@ -112,6 +115,7 @@ pip install opencv-python-headless tensorflow pyniryo numpy
 3. **Horizontal and Vertical Detection**:
    ```bash
    python approach2.py
+   python approach2updated.py
    ```
 
 ### Robot Calibration
