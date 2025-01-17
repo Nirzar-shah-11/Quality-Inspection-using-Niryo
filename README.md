@@ -74,7 +74,8 @@ Implements MobileNet SSD for defect detection and robotic sorting:
 
 Implements YOLOv8 for advanced object detection and pick-and-place operations:
 
-- `Approach1.py`, `Approach2.py`, `Approach3.py`: Various YOLO-based object detection approaches.
+- `Approach1.py`, `Approach2.py`: Various YOLO-based object detection approaches.
+- `Approach3.py`: YOLO based approach using 2 cameras 
 - `Approach4_trail.py`: Updated script for horizontal and vertical object detection.
 - `approach4_updated.py`: Prototype for a new approach.
 - `config1.yaml`: YOLOv8 configuration file for training.
