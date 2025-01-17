@@ -96,26 +96,26 @@ pip install opencv-python-headless tensorflow pyniryo numpy
    python VisionPickAndPlace/approach1.py
    python VisionPickAndPlace/approach2.py
    python VisionPickAndPlace/approach3.py
-   python VisionPickAndPlace/approach4trail.py
-   python VisionPickAndPlace/approach4updated.py
+   python VisionPickAndPlace/approach4_trail.py
+   python VisionPickAndPlace/approach4_updated.py
    ```
 
 ### MobileNet SSD Object Detection Approaches
 
 1. **Basic Pick-and-Place**:
    ```bash
-   python pickplacemobilenet.py
+   python CNN/pickplacemobilenet.py
    ```
 
 2. **Bottle Detection**:
    ```bash
-   python approach1.py
+   python CNN/approach1.py
    ```
 
 3. **Horizontal and Vertical Detection**:
    ```bash
-   python approach2.py
-   python approach2updated.py
+   python CNN/approach2.py
+   python CNN/approach2_updated.py
    ```
 
 ### Robot Calibration
