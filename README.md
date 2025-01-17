@@ -79,6 +79,7 @@ Implements YOLOv8 for advanced object detection and pick-and-place operations:
 - `Approach4_trail.py`: Updated script for horizontal and vertical object detection.
 - `approach4_updated.py`: Prototype for a new approach.
 - `config1.yaml`: YOLOv8 configuration file for training.
+- `yolov8_custom1.pt`: Fine Tuned YOLOv8 model for cream bottle detection.
 
 ---
 
@@ -87,7 +88,7 @@ Implements YOLOv8 for advanced object detection and pick-and-place operations:
 Scripts for detecting cream bottles:
 
 - `cream_bottle_detection.py`: Detects cream bottles using a custom YOLOv8 model.
-- `yolov8_custom1.pt`: Pre-trained YOLOv8 model for cream bottle detection.
+- `yolov8_custom1.pt`: Fine Tuned YOLOv8 model for cream bottle detection.
 
 ---
 
