@@ -38,6 +38,7 @@ Contains scripts for YOLO-based object detection:
 - `VisionSet_yolo_can_detection.py`: Configures and sets up vision-based detection using YOLO.
 - `yolo_can_detection.py`: Performs YOLO-based can detection.
 - `yolo_can_detection_training.py`: Training script for YOLO-based object detection.
+- `yolov8_custom.pt`: Fine Tuned YOLOv8 model for Fanta can detection.
 
 ---
 
